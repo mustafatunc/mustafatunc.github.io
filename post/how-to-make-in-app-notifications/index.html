@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>How to Make In-App Notifications</title>
+        <style>
+
+    html body {
+        font-family: 'Delius', sans-serif;
+        background-color: #75ffba;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://mustafatunc.github.io//css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-emacs.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/csharp.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.34" />
+        
+        
+        
+    </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">How to Make In-App Notifications</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:mstftnc12@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/mustafatunc/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/mustafa-tunc/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/how-to-make-in-app-notifications/">How to Make In-App Notifications</a></h4>
+    <h5>March 22, 2018</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><p><span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+If you want to add in-app notifications to let the user know what&rsquo;s going on in the game/app, here is how.
+At the end, you are going to have something like this:
+</span></p>
+
+<p><img src="/images/Notification-Video.gif" alt="Result" />
+Notifications popping&hellip;</p>
+
+<p></br>
+</br></p>
+
+<p><span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+OK. Tutorial Shall Commence!. First, start off with designing a Notification Bar image.
+Since my game is about sticks (Top Stick), I left it with its default image and just changed the size and color of it.
+Your Notification Bar can be different based on the theme of your game. Anyways.<br />
+</br>
+<strong>1.</strong> Create an Image object. Uncheck <code>Raycast Target</code> if you are not going to make it a Button (<code>Canvas</code> and <code>EventSystem</code> will be created after this step).<br />
+<strong>2.</strong> (Optional but necessary) Change Canvas&rsquo; <code>UI Scale Mode</code> to <code>Scale With Screen Size</code>.<br />
+<strong>3.</strong> Add a Text field to the Image as child (Uncheck <code>Raycast Target</code>, Check <code>Best Fit</code> and <code>Align with Geometry</code>).<br />
+<strong>4.</strong> Adjust the position of the Image. I put it just below the canvas. It could be above the canvas also. Up to you.<br />
+</br>
+So, finally, you should have a hierarchy like Canvas -&gt; Image -&gt; Text.<br />
+I changed their names to NotificationCanvas -&gt; NotificationBar -&gt; Message.
+This step looks like this:
+</br>
+</span></p>
+
+<p><img src="/images/1_Notification_Bar_Location.png" alt="Locating The Notification Bar" />
+Locate the notification bar just below the canvas.</p>
+
+<p></br>
+<span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+Now it&rsquo;s time to write some code. The next step is to make the notification go up, stay there for a while, and go down. Your animation can be different.
+It can come from the left and stay on the screen for a while and head to the right. Maybe it fades out, or explodes a few sec later. Who knows.<br />
+(PS: This step may seem unnecessary for you because we could use Animation for this. But, meh, I like it this way.)<br />
+</br>
+OK, What do we need to make this happen?:<br />
+<br>
+<strong>1.</strong> <code>offScreenPosition</code>, <code>onScreenPosition</code> and <code>lerpingPosition</code>.<br />
+<strong>2.</strong> A <code>waitTime</code> for duration that it stays still for.<br />
+<strong>3.</strong> A notification message.<br />
+<strong>4.</strong> A callBack type (<code>delegate</code>) to notify that it has finished.<br />
+</br>
+When a notification starts, it should go up, wait there for waitTime seconds and go back down. (To me) It&rsquo;s better to make it go down faster that moving it up.
+<code>Start()</code> function sets the direction (lerpingPosition) and starts the coroutine.
+<code>NotificationBarMovement()</code> function makes the things explained above. Until the bar reaches ( <code>&lt; 2.0f</code>) to the destination (<code>onScreenPosition</code>/<code>lerpingPosition</code>)
+it translates the Image. Then, waits for <code>waitTime</code> seconds, and translates the Image down.
+When this animations is completed, <code>rectTrans.gameObject.SetActive(false)</code> must be called.
+Also, we need <code>SetNotificationBarFeatures()</code> function to set the notification&rsquo;s fields, such as the message, <code>waitTime</code>, and callBack function. (You can add Color too)
+<code>SetNotificationBarFeatures()</code> function will be called by <code>NotificationManager</code>. Shhh, calm down! I will talk about the NotificationManager right after this.<br />
+</br>
+The C# script is here:<br />
+</br>
+</span></p>
+
+<p>NotificationBarMover.cs</p>
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System.Collections;
+<span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">using</span> UnityEngine.UI;
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NotificationBarMover</span> : MonoBehaviour {
+
+    <span style="color:#66d9ef">private</span> Vector2 onScreenPosition = <span style="color:#66d9ef">new</span> Vector2(<span style="color:#ae81ff">0.0f</span>, -<span style="color:#ae81ff">180.0f</span>); <span style="color:#75715e">// Will Be Seen 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> Vector2 offScreenPosition = <span style="color:#66d9ef">new</span> Vector2(<span style="color:#ae81ff">0.0f</span>, -<span style="color:#ae81ff">270.0f</span>); <span style="color:#75715e">// Will Be Below The Screen
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">private</span> Vector2 lerpingPosition; <span style="color:#75715e">// Where the bar goes to.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> RectTransform rectTrans; <span style="color:#75715e">// Transform for UI Components
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> Text notificationText; <span style="color:#75715e">// Notification Text/Message Field
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">delegate</span> <span style="color:#66d9ef">void</span> NotificationBarDestroyed(); <span style="color:#75715e">// Callback Type
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">private</span> NotificationBarDestroyed destroyedCallBack; <span style="color:#75715e">// Callback to Be Called When Destroyed
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> waitTime = <span style="color:#ae81ff">2.0f</span>;  <span style="color:#75715e">// Visible Wait Time
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">void</span> Start()
+    {
+        rectTrans = GetComponent&lt;RectTransform&gt;();
+        <span style="color:#a6e22e">rectTrans</span>.anchoredPosition = offScreenPosition;
+
+        lerpingPosition = onScreenPosition;
+
+        <span style="color:#a6e22e">gameObject</span>.SetActive(<span style="color:#66d9ef">true</span>);
+
+        StartCoroutine(NotificationBarMovement());
+
+
+
+    }
+
+    <span style="color:#66d9ef">private</span> IEnumerator NotificationBarMovement()
+    {
+
+        <span style="color:#75715e">// Go To The onScreenPosition 
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">Vector2</span>.Distance(<span style="color:#a6e22e">rectTrans</span>.anchoredPosition, onScreenPosition) &gt; <span style="color:#ae81ff">2.0f</span>)
+        {
+            <span style="color:#a6e22e">rectTrans</span>.anchoredPosition = <span style="color:#a6e22e">Vector2</span>.Lerp(<span style="color:#a6e22e">rectTrans</span>.anchoredPosition, lerpingPosition, <span style="color:#a6e22e">Time</span>.deltaTime * <span style="color:#ae81ff">2.8f</span>);
+            <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+        }
+
+        <span style="color:#75715e">// Wait On The Screen
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> WaitForSeconds(waitTime);
+
+        lerpingPosition = offScreenPosition;<span style="color:#75715e">// Change direction to offScrennPosition
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">// Go To The offScreenPosition, but faster.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">Vector2</span>.Distance(<span style="color:#a6e22e">rectTrans</span>.anchoredPosition, offScreenPosition) &gt; <span style="color:#ae81ff">2.0f</span>)
+        {
+            <span style="color:#a6e22e">rectTrans</span>.anchoredPosition = <span style="color:#a6e22e">Vector2</span>.Lerp(<span style="color:#a6e22e">rectTrans</span>.anchoredPosition, lerpingPosition, <span style="color:#a6e22e">Time</span>.deltaTime * <span style="color:#ae81ff">3.5f</span>);
+            <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+        }
+
+        <span style="color:#75715e">// Before Destroying, make it Inactive
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">rectTrans</span>.<span style="color:#a6e22e">gameObject</span>.SetActive(<span style="color:#66d9ef">false</span>);
+
+        <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">break</span>;
+    }
+
+    <span style="color:#66d9ef">void</span> OnDisable()
+    {
+        destroyedCallBack(); <span style="color:#75715e">// Callback
+</span><span style="color:#75715e"></span>        Destroy(<span style="color:#a6e22e">gameObject</span>.GetComponentInParent&lt;RectTransform&gt;().gameObject); <span style="color:#75715e">// Destroy The Parent.
+</span><span style="color:#75715e"></span>    }
+
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetNotificationBarFeatures(<span style="color:#66d9ef">string</span> message, <span style="color:#66d9ef">float</span> waitTime ,NotificationBarDestroyed callBack)
+    {
+        <span style="color:#a6e22e">notificationText</span>.text = message;
+        destroyedCallBack = callBack;
+        <span style="color:#66d9ef">this</span>.waitTime = waitTime;
+    }
+
+}</code></pre></div>
+<strong>Attach this script to NotificationBar/Image GameObject.</strong>
+</br>
+</br>
+<span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+Once you&rsquo;ve added the code to the Image/NotificationBar object, assign its <code>notificationText</code> field.
+Drag &amp; drop the Text/Message field under the NotificationBar to that spot.<br />
+If you don&rsquo;t have a Prefabs folder, create it. And drag this <code>NotificationCanvas</code> to that folder. In other words, make the <code>NotificationCanvas</code> a Prefab.
+<br>
+Like this:
+</br>
+</span></p>
+
+<p><img src="/images/2_Adding_Script_And_Making_Prefab.JPG" alt="Add Script And Make Prefab" /><br />
+Create a Canvas prefab</p>
+
+<p></br>
+</br>
+<span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+Having the prefab first is going to make the testing easier. That&rsquo;s done. Now let&rsquo;s create another script named <code>NotificationManager</code>.
+We are going to call the functions of this class to pop up a notification. This means, we need to be able to access it throughout the game.
+For that reason we are going make it Singleton. Also, to make it persistent, we have to add <code>DontDestroyOnLoad(gameObject)</code>.<br />
+NotificationManager has to show the notifications one by one, if there is more than one notification at the time. For example, say the user tried to sign in but
+there was no Internet connection, then you would say &lsquo;Sign In Failed&rsquo; and the reason &lsquo;No Connection&rsquo; back-to-back.
+Keeping notifications in a <code>Queue</code> serves this purpose. Queue holds objects, so we need a <code>Notification</code> type. A struct is more than enough to keep track of the notification data.
+Basically, a notification holds the message and how long it is going to display. You can add some other stuff too, like Color or maybe animation type (left to right, up to bottom etc).<br />
+I made an enum for duration options. <code>enum NotificationLength{ SHORT, MID, LONG };</code><br />
+Also, I have another enum to know what this notification about. <code>NotificationType{ LOGIN_FAILED, NO_CONNECTION, SUCCESS, CUSTOM};</code>. You can add more to this. These are just examples.
+Depending on the NotificationLength, you need to decide the actual time length. And depending on the NotificationType, you can customize the notification message.
+</br>
+</br>
+Create a function named <code>PushNotification</code> with type, length and additional message parameters. Also create a coroutine to display the notifications.
+PushNotification is easy, let&rsquo;s talk about <code>ShowNotification</code> coroutine. Here is the logic:<br />
+While there is notification waiting in the queue<br />
+* Wait until the current notification destroys itself (of course, if there is a notification displaying already).<br />
+* Then create notification based on the next Notification in the Queue.<br />
+</br>
+<code>PushNotification</code> function, however, doesn&rsquo;t do much. It just creates and adds the new Notification to the queue. And If the coroutine is now running, it runs it (again).
+The function <code>NotificationDestroyed</code> is called by NotificationBarMover class, whenever it disables itself.
+The rest of the code explains itself, so I shall no longer talk!!.<br />
+</br>
+Here is the code:
+</span></p>
+
+<p>NotificationManager.cs
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System.Collections;
+<span style="color:#66d9ef">using</span> System.Collections.Generic;
+<span style="color:#66d9ef">using</span> UnityEngine;
+
+
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NotificationManager</span> : MonoBehaviour {
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> NotificationType{ LOGIN_FAILED, NO_CONNECTION, SUCCESS, CUSTOM }; <span style="color:#75715e">// Notification Types For Different Causes. Can Be Altered.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> NotificationLength{ SHORT, MID, LONG }; <span style="color:#75715e">// Notification Durations.
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> NotificationManager Instance;
+    <span style="color:#66d9ef">public</span> GameObject notificationBar; <span style="color:#75715e">// Notification Bar Prefab
+</span><span style="color:#75715e"></span>    
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Notification</span> <span style="color:#75715e">// Notification Struct To Store The Information
+</span><span style="color:#75715e"></span>    {
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> message;
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> time;
+        <span style="color:#66d9ef">public</span> Notification(<span style="color:#66d9ef">string</span> m, <span style="color:#66d9ef">float</span> t) { message = m; time = t; }
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> isShowNotificationActive; <span style="color:#75715e">// Is ShowNotification Function Running Now?
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> isDisplaying; <span style="color:#75715e">// Is There A Notification Showing Already?
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> Queue&lt;Notification&gt; notificationBuffer; <span style="color:#75715e">// Queue For Notifications. (For Not Showing Them At The Same Time)
+</span><span style="color:#75715e"></span>
+
+    <span style="color:#66d9ef">void</span> Awake()
+    {
+		<span style="color:#66d9ef">if</span> (Instance == <span style="color:#66d9ef">null</span>){
+			Instance = <span style="color:#66d9ef">this</span>;
+		}
+		<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(Instance != <span style="color:#66d9ef">this</span>){
+			Destroy(gameObject);
+		}
+        
+		
+		notificationBuffer = <span style="color:#66d9ef">new</span> Queue&lt;Notification&gt;();
+        isDisplaying = isShowNotificationActive = <span style="color:#66d9ef">false</span>;
+        DontDestroyOnLoad(gameObject);<span style="color:#75715e">// This GameObject Is Persistent Thru The Scenes.
+</span><span style="color:#75715e"></span>    }
+
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> PushNotification(NotificationType type, NotificationLength len, <span style="color:#66d9ef">string</span> message = <span style="color:#e6db74">&#34;&#34;</span>)
+    {
+        Notification n = <span style="color:#66d9ef">new</span> Notification(GetMessageFromType(type) + message, GetTimeFromLength(len)); <span style="color:#75715e">// Create A Notification Object
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">notificationBuffer</span>.Enqueue(n); <span style="color:#75715e">// Add The Notification To The Queue
+</span><span style="color:#75715e"></span>        
+        <span style="color:#66d9ef">if</span> ( ! isShowNotificationActive) <span style="color:#75715e">// If Coroutine Is Not Running, Start It
+</span><span style="color:#75715e"></span>        {
+            StartCoroutine(ShowNotification());
+        }
+    }
+
+
+    <span style="color:#66d9ef">private</span> IEnumerator ShowNotification()
+    {
+        isShowNotificationActive = <span style="color:#66d9ef">true</span>; <span style="color:#75715e">// The Function Started
+</span><span style="color:#75715e"></span>
+        <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">notificationBuffer</span>.Count != <span style="color:#ae81ff">0</span>) <span style="color:#75715e">// While There Is Notification Object Waiting In The Queue
+</span><span style="color:#75715e"></span>        {
+            
+            <span style="color:#66d9ef">while</span> (isDisplaying)    <span style="color:#75715e">// While There Is Already A Notification Showing.
+</span><span style="color:#75715e"></span>            {
+                <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> WaitForSeconds(<span style="color:#ae81ff">1.0f</span>);  <span style="color:#75715e">// Wait, Until NotificationDestroyed Gets Called By NotificationBarMover
+</span><span style="color:#75715e"></span>            }
+
+            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">notificationBuffer</span>.Count == <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">break</span>; <span style="color:#75715e">// notificationBuffer may become empty while this function was waiting in isDisplaying loop above.
+</span><span style="color:#75715e"></span>
+            isDisplaying = <span style="color:#66d9ef">true</span>; <span style="color:#75715e">// The Notification Is Showing
+</span><span style="color:#75715e"></span>            GameObject nb = Instantiate(notificationBar); <span style="color:#75715e">// Crate A NotificationBar (Prefab)
+</span><span style="color:#75715e"></span>            Notification n = <span style="color:#a6e22e">notificationBuffer</span>.Peek(); <span style="color:#75715e">// Get The Top Notification
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">nb</span>.GetComponentInChildren&lt;NotificationBarMover&gt;().SetNotificationBarFeatures(<span style="color:#a6e22e">n</span>.message, <span style="color:#a6e22e">n</span>.time, NotificationDestroyed);<span style="color:#75715e">// Set The Members of NotificationBar
+</span><span style="color:#75715e"></span>
+        }
+        isShowNotificationActive = <span style="color:#66d9ef">false</span>; <span style="color:#75715e">// The Function Finished
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">break</span>;
+    }
+
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> NotificationDestroyed()
+    {
+        <span style="color:#a6e22e">notificationBuffer</span>.Dequeue(); <span style="color:#75715e">// Pop the Notification
+</span><span style="color:#75715e"></span>        isDisplaying = <span style="color:#66d9ef">false</span>; <span style="color:#75715e">// And It Is Not Displaying Anymore
+</span><span style="color:#75715e"></span>    }
+
+    
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> GetMessageFromType(NotificationType type) <span style="color:#75715e">// Get The Initial String For The Notification Type
+</span><span style="color:#75715e"></span>    {
+        <span style="color:#66d9ef">switch</span> (type)
+        {
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationType</span>.NO_CONNECTION:
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No Connection&#34;</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationType</span>.LOGIN_FAILED:
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Login Failed&#34;</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationType</span>.SUCCESS:
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Success&#34;</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationType</span>.CUSTOM:
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+            <span style="color:#66d9ef">default</span>:
+                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+        }
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> GetTimeFromLength(NotificationLength len) <span style="color:#75715e">// Get The Length Based On The Length Type. Values Can Be Changed
+</span><span style="color:#75715e"></span>    {
+        <span style="color:#66d9ef">switch</span> (len)
+        {
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationLength</span>.LONG:
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3.0f</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationLength</span>.MID:
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2.0f</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">NotificationLength</span>.SHORT:
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1.0f</span>;
+            <span style="color:#66d9ef">default</span>:
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1.5f</span>;
+        }
+    }
+}</code></pre></div>
+<strong>Create a GameObject named NotificationManager, and attach this script to it.</strong></p>
+
+<p></br>
+</br>
+<span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+While the manager is making notification work as slaves, let us go to the next step: TESTING, yaayy!<br />
+I added 3 buttons, one is for short notification and the others are for mid and long notifications.
+Now, just create a GameObject and attach the script.<br />
+Also assign your buttons&rsquo; <code>OnClick()</code> functions accordingly.<br />
+</br>
+Here is the test script:<br />
+</br>
+</span>
+NotificationTest.cs
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NotificationTest</span> : MonoBehaviour {
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count = <span style="color:#ae81ff">1</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ShortNotification()
+    {
+        <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">Instance</span>.PushNotification(
+            <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationType</span>.NO_CONNECTION,
+            <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationLength</span>.SHORT,
+            <span style="color:#e6db74">&#34; &#34;</span>+<span style="color:#a6e22e">count</span>.ToString()
+            );
+        count++;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> MidNotification()
+    {
+        <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">Instance</span>.PushNotification(
+           <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationType</span>.LOGIN_FAILED,
+           <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationLength</span>.MID,
+           <span style="color:#e6db74">&#34; &#34;</span>+<span style="color:#a6e22e">count</span>.ToString()
+           );
+        count++;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> LongNotification()
+    {
+        <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">Instance</span>.PushNotification(
+           <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationType</span>.CUSTOM,
+           <span style="color:#a6e22e">NotificationManager</span>.<span style="color:#a6e22e">NotificationLength</span>.LONG,
+           <span style="color:#e6db74">&#34;This is Long &#34;</span>+<span style="color:#a6e22e">count</span>.ToString()
+           );
+        count++;
+    }
+}</code></pre></div>
+<strong>Create a GameObject named NotificationTest, and attach this script to it.</strong></p>
+
+<p></br></p>
+
+<p><span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+This step looks like this:
+</br>
+</span>
+<img src="/images/3_NotificationManager_And_Test_Buttons.png" alt="Test Notifications" />
+Buttons for testing notifications.</p>
+
+<p></br>
+</br>
+<span style="color: #111111; font-family: Delius; font-size: 1.2em;">
+Now you can click the buttons until you break it. You&rsquo;ll see that notifications are not lost, and showing one at a time.<br />
+Like this:
+</br>
+</br>
+</span>
+<img src="/images/Notification-Video.gif" alt="Result" />
+Notifications popping&hellip;</p>
+
+<p></br>
+</br>
+<span style="color: #111111; font-family: Delius; font-size: 1.3em;">
+And The Developer Lived Happily Ever After&hellip; The End.<br />
+</br>
+</span></p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

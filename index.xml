@@ -17,16 +17,28 @@
       <pubDate>Wed, 07 Feb 2018 21:02:42 -0600</pubDate>
       
       <guid>https://mustafatunc.github.io/project/top_stick/</guid>
-      <description></description>
+      <description>This is going to be the game&amp;rsquo;s website quite soon. Like tomorrow or the day after.</description>
     </item>
     
     <item>
-      <title>Unity_2_5D_Game_Dev_Tips</title>
+      <title>How to Make In-App Notifications</title>
+      <link>https://mustafatunc.github.io/post/how-to-make-in-app-notifications/</link>
+      <pubDate>Thu, 22 Mar 2018 23:09:26 -0500</pubDate>
+      
+      <guid>https://mustafatunc.github.io/post/how-to-make-in-app-notifications/</guid>
+      <description>If you want to add in-app notifications to let the user know what&amp;rsquo;s going on in the game/app, here is how. At the end, you are going to have something like this: 
+Notifications popping&amp;hellip;
+ 
+OK. Tutorial Shall Commence!. First, start off with designing a Notification Bar image. Since my game is about sticks (Top Stick), I left it with its default image and just changed the size and color of it.</description>
+    </item>
+    
+    <item>
+      <title>Unity 2.5D Game Dev Tips</title>
       <link>https://mustafatunc.github.io/post/unity_2_5d_game_dev_tips/</link>
       <pubDate>Wed, 07 Feb 2018 21:01:59 -0600</pubDate>
       
       <guid>https://mustafatunc.github.io/post/unity_2_5d_game_dev_tips/</guid>
-      <description>There will be tutorial here.</description>
+      <description>This was supposed to be my first tutorial</description>
     </item>
     
   </channel>
