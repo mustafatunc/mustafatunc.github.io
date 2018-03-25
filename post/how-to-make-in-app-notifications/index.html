@@ -9,11 +9,11 @@
 
     html body {
         font-family: 'Delius', sans-serif;
-        background-color: #75ffba;
+        background-color: #caebf2;
     }
 
     :root {
-        --accent: red;
+        --accent: purple;
         --border-width:  0 ;
     }
 
@@ -134,16 +134,30 @@
     <h4><a href="/post/how-to-make-in-app-notifications/">How to Make In-App Notifications</a></h4>
     <h5>March 22, 2018</h5>
     
+    <a href="https://mustafatunc.github.io/tags/game"><kbd class="item-tag">game</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/unity"><kbd class="item-tag">unity</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/top-stick"><kbd class="item-tag">top stick</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/tutorial"><kbd class="item-tag">tutorial</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/notification"><kbd class="item-tag">notification</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/csharp"><kbd class="item-tag">csharp</kbd></a>
+    
+    <a href="https://mustafatunc.github.io/tags/in-app"><kbd class="item-tag">in-app</kbd></a>
+    
 
 </div>
 
 
     <br> <div class="text-justify"><p><span style="color: #111111; font-family: Delius; font-size: 1.2em;">
 If you want to add in-app notifications to let the user know what&rsquo;s going on in the game/app, here is how.
-At the end, you are going to have something like this:
+In the end, you are going to have something like this:
 </span></p>
 
-<p><img src="/images/Notification-Video.gif" alt="Result" />
+<p><img src="/images/posts/in_app_notifications/Notification-Video.gif" alt="Result" />
 Notifications popping&hellip;</p>
 
 <p></br>
@@ -156,7 +170,7 @@ Your Notification Bar can be different based on the theme of your game. Anyways.
 </br>
 <strong>1.</strong> Create an Image object. Uncheck <code>Raycast Target</code> if you are not going to make it a Button (<code>Canvas</code> and <code>EventSystem</code> will be created after this step).<br />
 <strong>2.</strong> (Optional but necessary) Change Canvas&rsquo; <code>UI Scale Mode</code> to <code>Scale With Screen Size</code>.<br />
-<strong>3.</strong> Add a Text field to the Image as child (Uncheck <code>Raycast Target</code>, Check <code>Best Fit</code> and <code>Align with Geometry</code>).<br />
+<strong>3.</strong> Add a Text field to the Image as its child (Uncheck <code>Raycast Target</code>, Check <code>Best Fit</code> and <code>Align with Geometry</code>).<br />
 <strong>4.</strong> Adjust the position of the Image. I put it just below the canvas. It could be above the canvas also. Up to you.<br />
 </br>
 So, finally, you should have a hierarchy like Canvas -&gt; Image -&gt; Text.<br />
@@ -165,13 +179,13 @@ This step looks like this:
 </br>
 </span></p>
 
-<p><img src="/images/1_Notification_Bar_Location.png" alt="Locating The Notification Bar" />
+<p><img src="/images/posts/in_app_notifications/1_Notification_Bar_Location.png" alt="Locating The Notification Bar" />
 Locate the notification bar just below the canvas.</p>
 
 <p></br>
 <span style="color: #111111; font-family: Delius; font-size: 1.2em;">
 Now it&rsquo;s time to write some code. The next step is to make the notification go up, stay there for a while, and go down. Your animation can be different.
-It can come from the left and stay on the screen for a while and head to the right. Maybe it fades out, or explodes a few sec later. Who knows.<br />
+It can come from the left and stay on the screen for a while and head to the right. Maybe it fades out or explodes a few secs later. Who knows.<br />
 (PS: This step may seem unnecessary for you because we could use Animation for this. But, meh, I like it this way.)<br />
 </br>
 OK, What do we need to make this happen?:<br />
@@ -181,12 +195,12 @@ OK, What do we need to make this happen?:<br />
 <strong>3.</strong> A notification message.<br />
 <strong>4.</strong> A callBack type (<code>delegate</code>) to notify that it has finished.<br />
 </br>
-When a notification starts, it should go up, wait there for waitTime seconds and go back down. (To me) It&rsquo;s better to make it go down faster that moving it up.
+When a notification starts, it should go up, wait there for waitTime seconds and go back down. (To me) It&rsquo;s better to make it go down faster than moving it up.
 <code>Start()</code> function sets the direction (lerpingPosition) and starts the coroutine.
 <code>NotificationBarMovement()</code> function makes the things explained above. Until the bar reaches ( <code>&lt; 2.0f</code>) to the destination (<code>onScreenPosition</code>/<code>lerpingPosition</code>)
 it translates the Image. Then, waits for <code>waitTime</code> seconds, and translates the Image down.
 When this animations is completed, <code>rectTrans.gameObject.SetActive(false)</code> must be called.
-Also, we need <code>SetNotificationBarFeatures()</code> function to set the notification&rsquo;s fields, such as the message, <code>waitTime</code>, and callBack function. (You can add Color too)
+Also, we need <code>SetNotificationBarFeatures()</code> function to set the notification&rsquo;s fields, such as the message, <code>waitTime</code>, and a callBack function. (You can add Color too)
 <code>SetNotificationBarFeatures()</code> function will be called by <code>NotificationManager</code>. Shhh, calm down! I will talk about the NotificationManager right after this.<br />
 </br>
 The C# script is here:<br />
@@ -284,25 +298,25 @@ Like this:
 </br>
 </span></p>
 
-<p><img src="/images/2_Adding_Script_And_Making_Prefab.JPG" alt="Add Script And Make Prefab" /><br />
+<p><img src="/images/posts/in_app_notifications/2_Adding_Script_And_Making_Prefab.JPG" alt="Add Script And Make Prefab" /><br />
 Create a Canvas prefab</p>
 
 <p></br>
 </br>
 <span style="color: #111111; font-family: Delius; font-size: 1.2em;">
 Having the prefab first is going to make the testing easier. That&rsquo;s done. Now let&rsquo;s create another script named <code>NotificationManager</code>.
-We are going to call the functions of this class to pop up a notification. This means, we need to be able to access it throughout the game.
-For that reason we are going make it Singleton. Also, to make it persistent, we have to add <code>DontDestroyOnLoad(gameObject)</code>.<br />
-NotificationManager has to show the notifications one by one, if there is more than one notification at the time. For example, say the user tried to sign in but
+We are going to call the functions of this class to pop up a notification. This means that we need to be able to access it throughout the game.
+For that reason, we are going make it Singleton. Also, to make it persistent, we have to add <code>DontDestroyOnLoad(gameObject)</code>.<br />
+NotificationManager has to show the notifications one by one if there is more than one notification at the time. For example, say the user tried to sign in but
 there was no Internet connection, then you would say &lsquo;Sign In Failed&rsquo; and the reason &lsquo;No Connection&rsquo; back-to-back.
-Keeping notifications in a <code>Queue</code> serves this purpose. Queue holds objects, so we need a <code>Notification</code> type. A struct is more than enough to keep track of the notification data.
+Keeping notifications in a <code>Queue</code> serves this purpose. The Queue holds objects, so we need a <code>Notification</code> type. A struct is more than enough to keep track of the notification data.
 Basically, a notification holds the message and how long it is going to display. You can add some other stuff too, like Color or maybe animation type (left to right, up to bottom etc).<br />
 I made an enum for duration options. <code>enum NotificationLength{ SHORT, MID, LONG };</code><br />
 Also, I have another enum to know what this notification about. <code>NotificationType{ LOGIN_FAILED, NO_CONNECTION, SUCCESS, CUSTOM};</code>. You can add more to this. These are just examples.
 Depending on the NotificationLength, you need to decide the actual time length. And depending on the NotificationType, you can customize the notification message.
 </br>
 </br>
-Create a function named <code>PushNotification</code> with type, length and additional message parameters. Also create a coroutine to display the notifications.
+Create a function named <code>PushNotification</code> with type, length, and additional message parameters. Also, create a coroutine to display the notifications.
 PushNotification is easy, let&rsquo;s talk about <code>ShowNotification</code> coroutine. Here is the logic:<br />
 While there is notification waiting in the queue<br />
 * Wait until the current notification destroys itself (of course, if there is a notification displaying already).<br />
@@ -492,7 +506,7 @@ NotificationTest.cs
 This step looks like this:
 </br>
 </span>
-<img src="/images/3_NotificationManager_And_Test_Buttons.png" alt="Test Notifications" />
+<img src="/images/posts/in_app_notifications/3_NotificationManager_And_Test_Buttons.png" alt="Test Notifications" />
 Buttons for testing notifications.</p>
 
 <p></br>
@@ -503,7 +517,7 @@ Like this:
 </br>
 </br>
 </span>
-<img src="/images/Notification-Video.gif" alt="Result" />
+<img src="/images/posts/in_app_notifications/Notification-Video.gif" alt="Result" />
 Notifications popping&hellip;</p>
 
 <p></br>

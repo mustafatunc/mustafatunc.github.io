@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mustafa Tunc</title>
-    <link>https://mustafatunc.github.io/</link>
-    <description>Recent content on Mustafa Tunc</description>
+    <title>Game on Mustafa Tunc</title>
+    <link>https://mustafatunc.github.io/tags/game/</link>
+    <description>Recent content in Game on Mustafa Tunc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Mar 2018 22:15:48 -0500</lastBuildDate>
     
-	<atom:link href="https://mustafatunc.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mustafatunc.github.io/tags/game/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -31,15 +31,6 @@ You have achievements to complete and you can compete against other players by s
 Notifications popping&amp;hellip;
  
 OK. Tutorial Shall Commence!. First, start off with designing a Notification Bar image. Since my game is about sticks (Top Stick), I left it with its default image and just changed the size and color of it.</description>
-    </item>
-    
-    <item>
-      <title>Unity 2.5D Game Dev Tips</title>
-      <link>https://mustafatunc.github.io/post/unity_2_5d_game_dev_tips/</link>
-      <pubDate>Wed, 07 Feb 2018 21:01:59 -0600</pubDate>
-      
-      <guid>https://mustafatunc.github.io/post/unity_2_5d_game_dev_tips/</guid>
-      <description>This was supposed to be my first tutorial</description>
     </item>
     
   </channel>
